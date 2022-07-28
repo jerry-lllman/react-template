@@ -4,11 +4,11 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 module.exports = function () {
 	return {
 		mode: "development",
-		entry: './src/index.jsx',
+		entry: './src/main.ts',
 		module: {
 			rules: [
 				{
-					test: /\.jsx$/,
+					test: /\.tsx$/,
 					loader: 'babel-loader',
 				},
 				{
@@ -29,6 +29,9 @@ module.exports = function () {
 					]
 				}
 			]
+		},
+		resolve: {
+			extensions: ['.ts', '.js', '.tsx', '.jsx']
 		},
 		devServer: {
 			// 启用热更新

@@ -1,8 +1,12 @@
 {
 	"presets": [
+		// 浏览器环境支持
+		"@babel/preset-env",
 		["@babel/preset-react", {
 			// 不需要显示的导入 React
 			"runtime": "automatic"
-		}]
+		}],
+		// 转译 typescript
+		"@babel/preset-typescript"
 	]
 }
