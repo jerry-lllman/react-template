@@ -12,13 +12,6 @@ module.exports = function (): Configuration {
 				{
 					test: /\.jsx$/,
 					loader: 'babel-loader',
-					options: {
-						"presets": [
-							["@babel/preset-react", {
-								"runtime": "automatic"
-							}]
-						]
-					}
 				},
 				{
 					test: /\.less$/,

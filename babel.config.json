@@ -1,0 +1,8 @@
+{
+	"presets": [
+		["@babel/preset-react", {
+			// 不需要显示的导入 React
+			"runtime": "automatic"
+		}]
+	]
+}
