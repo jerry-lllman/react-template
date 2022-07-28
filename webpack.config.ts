@@ -1,11 +1,9 @@
-import { Configuration } from 'webpack'
 import HTMLWebpackPlugin from 'html-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
-// 接下来是 webpack-dev-server
 
-module.exports = function (): Configuration {
+module.exports = function () {
 	return {
-		mode: 'none',
+		mode: "development",
 		entry: './src/index.jsx',
 		module: {
 			rules: [
@@ -26,11 +24,18 @@ module.exports = function (): Configuration {
 						},
 						"postcss-loader",
 						"less-loader"
-						// postcss-preset-env
+						// postcss-preset-env postcss 
 						// postcss-less
 					]
 				}
 			]
+		},
+		devServer: {
+			// 启用热更新
+			hot: true,
+			// 启用 gzip compression
+			compress: true,
+			port: 9000,
 		},
 		plugins: [
 			new MiniCssExtractPlugin(),
@@ -40,3 +45,5 @@ module.exports = function (): Configuration {
 		]
 	}
 }
+
+  // "build": "webpack --config prod.config.js"
