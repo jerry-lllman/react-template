@@ -1,8 +1,12 @@
 import './index.less'
+const M = require('./assets/m.jpeg')
 
-const jsx = <div>a</div>
+const jsx = <div>
+	<img src={M} alt="" />
+</div>
 
-var    a =    1
+const    a =    1
+const    q =    '1'
 
 class A {
 	constructor() {
