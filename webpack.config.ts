@@ -1,3 +1,4 @@
+import ESLintWebpackPlugin from 'eslint-webpack-plugin'
 import HTMLWebpackPlugin from 'html-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 
@@ -8,7 +9,7 @@ module.exports = function () {
 		module: {
 			rules: [
 				{
-					test: /\.tsx$/,
+					test: /\.(t|j)sx$/,
 					loader: 'babel-loader',
 				},
 				{
@@ -41,6 +42,7 @@ module.exports = function () {
 			port: 9000,
 		},
 		plugins: [
+			new ESLintWebpackPlugin(),
 			new MiniCssExtractPlugin(),
 			new HTMLWebpackPlugin({
 				template: 'public/index.html'
