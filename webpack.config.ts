@@ -9,7 +9,7 @@ module.exports = function () {
 
 	return {
 		mode: "development",
-		entry: './src/main.ts',
+		entry: './src/main.tsx',
 		devtool: "source-map",
 		module: {
 			rules: [
