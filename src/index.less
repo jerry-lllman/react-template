@@ -1,9 +1,13 @@
+@import (less) './assets/sprite.less';
+
 body {
 	padding: 10px;
 }
 .node {
 	color: #cac;
 	transform: translate(10px, 10px);
+	// 使用雪碧图，参数为原图片文件名
+	.sprite(@w)
 }
 
 ::placeholder {

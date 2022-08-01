@@ -1,7 +1,6 @@
 
 ## 开发须知
 
-
 ## 技术栈
   1. 使用 pnpm 进行管理
 	2. 使用 webpack 构建
@@ -12,6 +11,7 @@
 	-- 更多设置等待 
 2. webpack 配置 
 	-- 图片处理 ✅
+	-- 生产环境 图片优化 image-webpack-loader
 	-- sourceMap 
 	-- 文件路径别名
 	-- 性能分析工具
@@ -20,8 +20,9 @@
 	-- 并行构建
 	-- tree-shaking
 	-- ...
-2. 构建命令多环境仅使用一个即可，维护在一个 script 文件中 读取命令行参数
-3. 多环境分离
-4. gitcommit-hooks
-5. docker
+3. 构建命令多环境仅使用一个即可，维护在一个 script 文件中 读取命令行参数
+4. 多环境分离
+5. gitcommit-hooks
+6. docker
+7. nginx
 ...

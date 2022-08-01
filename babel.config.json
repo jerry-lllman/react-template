@@ -6,7 +6,7 @@
 			// 不需要显示的导入 React
 			"runtime": "automatic"
 		}],
-		// 转译 typescript
+		// polyfill
 		"@babel/preset-typescript"
 	]
 }
