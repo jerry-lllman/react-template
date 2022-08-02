@@ -21,6 +21,7 @@
 	-- 并行构建
 	-- tree-shaking
 	-- ...
+3. babel-loader 存在的问题是无法进行错误类型检测，需要结合tsc 来检测代码是否正确
 5. gitcommit-hooks
 6. docker
 7. nginx

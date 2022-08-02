@@ -4,10 +4,12 @@
   "description": "",
   "main": "src/main.ts",
   "scripts": {
-    "build": "webpack --config config/webpack.production.ts",
+    "build": "pnpm run type-check && webpack --config config/webpack.production.ts",
     "start:dev": "webpack serve --config config/webpack.development.ts",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx src",
-    "lint-fix": "eslint --fix --ext .js,.jsx,.ts,.tsx src"
+    "lint-fix": "eslint --fix --ext .js,.jsx,.ts,.tsx src",
+    "type-check": "tsc --noEmit",
+    "type-check-watch": "tsc --noEmit --watch"
   },
   "keywords": [],
   "author": "",
