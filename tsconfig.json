@@ -19,9 +19,14 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx", // 表示 jsx 语法
-    "importHelpers": true
+    "importHelpers": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
   },
   "include": [
     "src"
-  ]
+  ],
+  "exclude": ["node_modules", "src/**/*.spec.ts"]
 }

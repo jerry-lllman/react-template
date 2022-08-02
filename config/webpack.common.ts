@@ -45,7 +45,12 @@ module.exports = {
 	resolve: {
 		// 导入时不用带文件后缀
 		extensions: ['.ts', '.js', '.tsx', '.jsx'],
-		modules: ['node_modules', 'assets']
+		modules: ['node_modules', 'assets'],
+		// 别名
+		alias: {
+			'@': path.resolve('.', '/src'),
+
+		}
 	},
 	plugins: [
 		// 将多图片放到一张雪碧图中 如果使用的是 http2 则无此雪碧图的必要
