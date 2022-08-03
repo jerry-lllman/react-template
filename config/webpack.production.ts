@@ -28,7 +28,10 @@ module.exports = merge(
 			]
 		},
 		plugins: [
-			new MiniCssExtractPlugin()
+			new MiniCssExtractPlugin({
+				// css 输出添加hash
+				filename: 'styles/[name]-[contenthash:12].css'
+			})
 		]
 	}
 ) 

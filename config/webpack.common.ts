@@ -9,8 +9,12 @@ console.log(path.resolve('.', 'dist'))
 module.exports = {
 	entry: '/src/main.tsx',
 	output: {
-		filename: '[name].js',
-		path: path.resolve('.', 'dist')
+		// 每次打包输出之前都删除dist
+		clean: true,
+		filename: 'js/[name]-[contenthash:12].bundle.js',
+		path: path.resolve('.', 'dist'),
+		// 图片打包路径修改到 images 文件夹内
+		assetModuleFilename: 'images/[contenthash:12][ext][query]'
 	},
 	module: {
 		rules: [
