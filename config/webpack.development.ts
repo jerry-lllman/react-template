@@ -34,4 +34,3 @@ module.exports = merge(baseConfig, {
 		port: 9000,
 	},
 })
-

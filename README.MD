@@ -9,19 +9,19 @@
 ## todos
 1. eslint 💡
 	-- 更多设置
-2. webpack 配置 
+2. webpack 配置  
 	-- 图片处理 ✅  
 	-- 生产环境 图片优化 ✅  
 	-- sourceMap ✅  
 	-- 多环境分离 ✅  
 	-- 文件路径别名 ✅  
-	-- 打包产物文件名添加 hash ✅
+	-- 打包产物文件名添加 hash ✅  
 	-- 性能分析工具  
 	-- 持久化缓存  
 	-- 代码分割  
 	-- 并行构建  
 	-- tree-shaking  
-	-- ...  
+	-- More...  
 3. 打包时结合tsc 来检测代码是否正确 ✅  
 	-- 原因：babel-loader 可以进行ts转译，但是不能进行错误类型检测
 5. gitcommit-hooks
