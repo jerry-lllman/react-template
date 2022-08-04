@@ -3,21 +3,12 @@ import HTMLWebpackPlugin from 'html-webpack-plugin'
 import path from 'path'
 
 const SpritesmithPlugin = require('webpack-spritesmith')
-const threadLoader = require('thread-loader')
 
-threadLoader.warmup(
-	{
-		workerParallelJobs: 50,
-		poolRespawn: false
-	},
-	[
-		// 子进程中需要预加载多 node 模块，这边配置的，对应的loader之前一定要添加 thread-loader
-		'babel-loader',
-		// ....
-		'less-loader'
-	]
-)
-
+const threadLoaderOptions = {
+	workerParallelJobs: 50,
+	poolRespawn: false,
+	poolParallelJobs: 50,
+}
 
 module.exports = {
 	entry: '/src/main.tsx',
@@ -39,7 +30,10 @@ module.exports = {
 			{
 				test: /\.(ts|js|tsx|jsx)$/,
 				use: [
-					'thread-loader',
+					{
+						loader: 'thread-loader',
+						options: threadLoaderOptions
+					},
 					'babel-loader'
 				],
 				// loader: 'babel-loader',

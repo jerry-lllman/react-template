@@ -1,8 +1,29 @@
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 import { merge } from 'webpack-merge'
+import TerserPlugin from 'terser-webpack-plugin'
 
 const baseConfig = require('./webpack.common')
+
+const TerserPluginOptions = {
+	// 压缩方式
+	// 1. 默认的TerserPlugin.terserMinify
+	// 2. TerserPlugin.uglifyJsMinify
+	// 3. TerserPlugin.swcMinify
+	// 4. TerserPlugin.esbuildMinify
+	minify: TerserPlugin.swcMinify, // 使用swc后速度提升 20%
+	// 不将注释单独抽离
+	// extractComments: false,
+	terserOptions: {
+		format: {
+			// 删除注释
+			comments: false
+		},
+		compress: {
+			drop_console: true,
+		}
+	}
+}
 
 module.exports = (env: any, config: any) => {
 	const { profile } = config
@@ -10,12 +31,25 @@ module.exports = (env: any, config: any) => {
 		baseConfig,
 		{
 			mode: 'production',
+			optimization: {
+				minimize: true,
+				minimizer: [
+					new TerserPlugin(TerserPluginOptions)
+				]
+			},
 			module: {
 				rules: [
 					{
 						test: /\.less$/,
 						use: [
-							"thread-loader",
+							// 针对 MiniCssExtractPlugin 出错，暂时未找出解决办法
+							// {
+							// 	loader: 'thread-loader',
+							// 	options: {
+							// 		workerParallelJobs: 50,
+							// 		poolRespawn: false	
+							// 	}
+							// },
 							MiniCssExtractPlugin.loader,
 							{
 								loader: "css-loader",
