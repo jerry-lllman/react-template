@@ -11,6 +11,7 @@ module.exports = merge(baseConfig, {
 			{
 				test: /\.less$/,
 				use: [
+					"thread-loader",
 					"style-loader",
 					{
 						loader: "css-loader",

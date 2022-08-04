@@ -15,6 +15,7 @@ module.exports = (env: any, config: any) => {
 					{
 						test: /\.less$/,
 						use: [
+							"thread-loader",
 							MiniCssExtractPlugin.loader,
 							{
 								loader: "css-loader",

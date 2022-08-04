@@ -3,8 +3,21 @@ import HTMLWebpackPlugin from 'html-webpack-plugin'
 import path from 'path'
 
 const SpritesmithPlugin = require('webpack-spritesmith')
+const threadLoader = require('thread-loader')
 
-console.log(path.resolve('.', 'dist'))
+threadLoader.warmup(
+	{
+		workerParallelJobs: 50,
+		poolRespawn: false
+	},
+	[
+		// 子进程中需要预加载多 node 模块，这边配置的，对应的loader之前一定要添加 thread-loader
+		'babel-loader',
+		// ....
+		'less-loader'
+	]
+)
+
 
 module.exports = {
 	entry: '/src/main.tsx',
@@ -25,7 +38,11 @@ module.exports = {
 			// js文件 ts jsx 都通过 babel 进行处理
 			{
 				test: /\.(ts|js|tsx|jsx)$/,
-				loader: 'babel-loader',
+				use: [
+					'thread-loader',
+					'babel-loader'
+				],
+				// loader: 'babel-loader',
 			},
 			{
 				test: /\.(png|jpg|jpeg)$/,
