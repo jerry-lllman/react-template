@@ -16,6 +16,10 @@ module.exports = {
 		// 图片打包路径修改到 images 文件夹内
 		assetModuleFilename: 'images/[contenthash:12][ext][query]'
 	},
+	cache: {
+		// 支持 'memory' | 'filesystem' filesystem 为持久化缓存
+		type: 'filesystem',
+	},
 	module: {
 		rules: [
 			// js文件 ts jsx 都通过 babel 进行处理
