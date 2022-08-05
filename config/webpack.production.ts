@@ -13,7 +13,7 @@ const TerserPluginOptions = {
 	// 4. TerserPlugin.esbuildMinify
 	minify: TerserPlugin.swcMinify, // 使用swc后速度提升 20%
 	// 不将注释单独抽离
-	// extractComments: false,
+	extractComments: false,
 	terserOptions: {
 		format: {
 			// 删除注释
