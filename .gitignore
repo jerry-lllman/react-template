@@ -1,3 +1,5 @@
 
 node_modules
 dist
+src/assets/sprite.less
+src/assets/sprite.png
