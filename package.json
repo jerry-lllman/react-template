@@ -5,13 +5,12 @@
   "main": "src/main.ts",
   "scripts": {
     "base-build": "webpack --config config/webpack.production.ts",
-    "build": "pnpm run lint-fix && pnpm run type-check && pnpm run base-build",
+    "build": "pnpm run eslint && pnpm run type-check && pnpm run base-build",
     "analyz": "pnpm run base-build --profile",
     "start:dev": "webpack serve --config config/webpack.development.ts",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx src",
-    "lint-fix": "eslint --fix --ext .js,.jsx,.ts,.tsx src",
+    "lint": "pnpm run eslint && pnpm run type-check",
+    "eslint": "eslint --fix --ext .js,.jsx,.ts,.tsx src",
     "type-check": "tsc --noEmit",
-    "type-check-watch": "tsc --noEmit --watch",
     "postinstall": "husky install"
   },
   "keywords": [],
