@@ -19,6 +19,7 @@ specifiers:
   eslint-plugin-react: ^7.30.1
   eslint-webpack-plugin: ^3.2.0
   html-webpack-plugin: ^5.5.0
+  husky: ^8.0.1
   less: ^4.1.3
   less-loader: ^11.0.0
   mini-css-extract-plugin: ^2.6.1
@@ -60,6 +61,7 @@ devDependencies:
   eslint-plugin-react: 7.30.1_eslint@8.20.0
   eslint-webpack-plugin: 3.2.0_6lrbhmgrkfstab745tfy2eb3xq
   html-webpack-plugin: 5.5.0_webpack@5.74.0
+  husky: 8.0.1
   less: 4.1.3
   less-loader: 11.0.0_less@4.1.3+webpack@5.74.0
   mini-css-extract-plugin: 2.6.1_webpack@5.74.0
@@ -3741,6 +3743,12 @@ packages:
   /human-signals/2.1.0:
     resolution: {integrity: sha512-B4FFZ6q/T2jhhksgkbEW3HBvWIfDW85snkQgawt07S7J5QXTk6BkNV+0yAeZrM5QpMAdYlocGoljn0sJ/WQkFw==}
     engines: {node: '>=10.17.0'}
+    dev: true
+
+  /husky/8.0.1:
+    resolution: {integrity: sha512-xs7/chUH/CKdOCs7Zy0Aev9e/dKOMZf3K1Az1nar3tzlv0jfqnYtu235bstsWTmXOR0EfINrPa97yy4Lz6RiKw==}
+    engines: {node: '>=14'}
+    hasBin: true
     dev: true
 
   /iconv-lite/0.4.24:
