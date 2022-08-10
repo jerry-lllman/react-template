@@ -23,7 +23,6 @@ specifiers:
   less: ^4.1.3
   less-loader: ^11.0.0
   lint-staged: ^13.0.3
-  lint-staged-tsc: ^0.2.1
   mini-css-extract-plugin: ^2.6.1
   postcss: ^8.4.14
   postcss-loader: ^7.0.1
@@ -67,7 +66,6 @@ devDependencies:
   less: 4.1.3
   less-loader: 11.0.0_less@4.1.3+webpack@5.74.0
   lint-staged: 13.0.3
-  lint-staged-tsc: 0.2.1
   mini-css-extract-plugin: 2.6.1_webpack@5.74.0
   postcss: 8.4.14
   postcss-loader: 7.0.1_m6qh27jiicejwnzfgs742cokpe
@@ -4320,12 +4318,6 @@ packages:
 
   /lines-and-columns/1.2.4:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
-    dev: true
-
-  /lint-staged-tsc/0.2.1:
-    resolution: {integrity: sha512-gS2oglFHrMOTv+0rsgg2DGCkylcCUuEpNDv/Cn7gphXcpjSP6D1JM5/QQfp8nO9/OtEydXa7Kh5YFKuqcBo5EQ==}
-    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
-    hasBin: true
     dev: true
 
   /lint-staged/13.0.3:
