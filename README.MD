@@ -27,7 +27,7 @@
 	-- 原因：babel-loader 可以进行ts转译，但是不能进行错误类型检测  
 5. gitcommit-hooks  
 	-- pre-commit ✅  
-	-- lint-staged 优化，仅对存入暂存区的文件进行lint检查  
+	-- lint-staged 优化，仅对存入暂存区的文件进行lint检查 ✅  
 6. docker  
 7. nginx  
 ...
