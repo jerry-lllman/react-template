@@ -28,6 +28,7 @@
 5. gitcommit-hooks  
 	-- pre-commit ✅  
 	-- lint-staged 优化，仅对存入暂存区的文件进行lint检查 ✅  
+	-- 提交时的 commit 信息规范 ✅  
 6. docker  
 7. nginx  
 ...
