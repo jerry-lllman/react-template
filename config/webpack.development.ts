@@ -6,6 +6,15 @@ const baseConfig = require('./webpack.common')
 module.exports = merge(baseConfig, {
 	mode: 'development',
 	devtool: 'source-map',
+	optimization: {
+		// 开发模式禁用产物优化
+		removeAvailableModules: false,
+    removeEmptyChunks: false,
+    splitChunks: false,
+    minimize: false,
+    concatenateModules: false,
+    usedExports: false,
+	},
 	module: {
 		rules: [
 			{

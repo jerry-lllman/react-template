@@ -21,7 +21,11 @@
 	-- 代码分割  
 	-- 并行构建 ✅  
 	-- 代码压缩 swc ✅  
+	-- code-split  
 	-- tree-shaking  
+	-- 约束 loader 执行范围  
+	-- 开发模式禁用产物优化 ✅  
+
 	-- More...  
 3. 打包时结合tsc 来检测代码是否正确 ✅  
 	-- 原因：babel-loader 可以进行ts转译，但是不能进行错误类型检测  
