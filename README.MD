@@ -7,7 +7,7 @@
 	3. 开发技术 ReactV18 + TypeScript  
 
 ## todos
-1. eslint 💡
+1. eslint 💡  
 	-- 更多设置
 2. webpack 配置  
 	-- 图片处理 ✅  
