@@ -1,8 +1,6 @@
-import ESLintWebpackPlugin from 'eslint-webpack-plugin'
-import HTMLWebpackPlugin from 'html-webpack-plugin'
-import path from 'path'
-
-const SpritesmithPlugin = require('webpack-spritesmith')
+const ESLintWebpackPlugin = require('eslint-webpack-plugin')
+const HTMLWebpackPlugin = require('html-webpack-plugin')
+const path = require('path')
 
 const threadLoaderOptions = {
 	workerParallelJobs: 50,
@@ -15,9 +13,6 @@ module.exports = {
 	output: {
 		// 每次打包输出之前都删除dist
 		clean: true,
-		// hash 
-		// chunkhash 
-		// contenthash 
 		filename: 'js/[name]-[contenthash:12].bundle.js',
 		path: path.resolve('.', 'dist'),
 		// 图片打包路径修改到 images 文件夹内
@@ -39,7 +34,6 @@ module.exports = {
 					},
 					'babel-loader'
 				],
-				// loader: 'babel-loader',
 			},
 			{
 				test: /\.(png|jpg|jpeg)$/,
@@ -75,17 +69,6 @@ module.exports = {
 		}
 	},
 	plugins: [
-		// 将多图片放到一张雪碧图中 如果使用的是 http2 则无此雪碧图的必要
-		new SpritesmithPlugin({
-			src: {
-				cwd: path.resolve('.', 'src/icons'),
-				glob: '*png'
-			},
-			target: {
-				image: path.resolve('.', 'src/assets/sprite.png'),
-				css: path.resolve('.', 'src/assets/sprite.less')
-			}
-		}),
 		new ESLintWebpackPlugin({
 			// extensions 默认 js
 			extensions: ['.ts', '.js', '.tsx', '.jsx'],
@@ -94,6 +77,6 @@ module.exports = {
 		// 生成 html 模版，将资源自动引入
 		new HTMLWebpackPlugin({
 			template: 'public/index.html'
-		})
+		}),
 	]
 }

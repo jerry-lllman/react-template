@@ -1,7 +1,7 @@
-import MiniCssExtractPlugin from "mini-css-extract-plugin";
-import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
-import { merge } from 'webpack-merge'
-import TerserPlugin from 'terser-webpack-plugin'
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
+const { merge } = require('webpack-merge')
+const TerserPlugin = require('terser-webpack-plugin')
 
 const baseConfig = require('./webpack.common')
 
@@ -25,7 +25,7 @@ const TerserPluginOptions = {
 	}
 }
 
-module.exports = (env: any, config: any) => {
+module.exports = (env, config) => {
 	const { profile } = config
 	return merge(
 		baseConfig,

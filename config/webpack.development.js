@@ -1,4 +1,4 @@
-import { merge } from 'webpack-merge'
+const { merge } = require('webpack-merge')
 
 const baseConfig = require('./webpack.common')
 
@@ -42,5 +42,14 @@ module.exports = merge(baseConfig, {
 		// 启用 gzip compression
 		compress: true,
 		port: 9000,
+		// 路由使用 history 模式
+		historyApiFallback: true,
+		client: {
+			overlay: {
+				errors: true,
+				// 关闭在浏览器中的 warning 的全屏提示
+				warnings: false
+			}
+		}
 	},
 })
