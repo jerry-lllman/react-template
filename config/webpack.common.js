@@ -22,6 +22,10 @@ module.exports = {
 		// 支持 'memory' | 'filesystem' filesystem 为持久化缓存
 		type: 'filesystem',
 	},
+	optimization: {
+		// 将 webpack 运行时代码（ webpack 骨架 ）分离出去。可降低 hash 变更导致浏览器缓存失效的影响
+		runtimeChunk: true
+	},
 	module: {
 		rules: [
 			// js文件 ts jsx 都通过 babel 进行处理
