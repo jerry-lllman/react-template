@@ -14,6 +14,7 @@ module.exports = merge(baseConfig, {
     minimize: false,
     concatenateModules: false,
     usedExports: false,
+		splitChunks: false
 	},
 	module: {
 		rules: [

@@ -13,7 +13,10 @@ module.exports = {
 	output: {
 		// 每次打包输出之前都删除dist
 		clean: true,
-		filename: 'js/[name]-[contenthash:12].bundle.js',
+		// initial chunk 的文件名（initial chunk：首次 HTML 必须加载的模块）
+		filename: 'js/[name]-[contenthash:12].bundle.js', 
+		// 非 initial chunk 的文件名
+		chunkFilename: 'js/[name]-[contenthash:12].chunk.js',
 		path: path.resolve('.', 'dist'),
 		// 图片打包路径修改到 images 文件夹内
 		assetModuleFilename: 'images/[contenthash:12][ext][query]'

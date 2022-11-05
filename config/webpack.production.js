@@ -2,6 +2,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 const { merge } = require('webpack-merge')
 const TerserPlugin = require('terser-webpack-plugin')
+const path = require('path')
 
 const baseConfig = require('./webpack.common')
 
@@ -25,6 +26,38 @@ const TerserPluginOptions = {
 	}
 }
 
+const topLevelFrameworkPaths = []
+const visitedFrameworkPackages = new Set()
+
+const addPackagePath = (packageName, relativeToPath) => {
+	try {
+		if (visitedFrameworkPackages.has(packageName)) {
+			return
+		}
+		visitedFrameworkPackages.add(packageName)
+
+		const packageJsonPath = require.resolve(`${packageName}/package.json`, {
+			paths: [relativeToPath],
+		})
+
+		const directory = path.join(packageJsonPath, '../')
+
+		if (topLevelFrameworkPaths.includes(directory)) return
+		topLevelFrameworkPaths.push(directory)
+
+		const dependencies = require(packageJsonPath).dependencies || {}
+		for (const name of Object.keys(dependencies)) {
+			addPackagePath(name, directory)
+		}
+	} catch (_) {
+	}
+}
+
+// 收集 react/react-dom 的所有依赖
+for (const packageName of ['react', 'react-dom']) {
+	addPackagePath(packageName, '.')
+}
+
 module.exports = (env, config) => {
 	const { profile } = config
 	return merge(
@@ -35,7 +68,27 @@ module.exports = (env, config) => {
 				minimize: true,
 				minimizer: [
 					new TerserPlugin(TerserPluginOptions)
-				]
+				],
+				splitChunks: {
+					// 包含 异步 和 initial 的（只要符合规则，都将被分成单独包）
+					chunks: 'all',
+					cacheGroups: {
+						// 将 react 框架单独分包
+						framework: {
+							chunks: 'all',
+							name: 'framework',
+							test(module) {
+								const resource = module.nameForCondition && module.nameForCondition()
+								return resource
+									? topLevelFrameworkPaths.some((pkgPath) => resource.startsWith(pkgPath))
+									: false
+							},
+							priority: 40,
+							// 告诉 webpack 忽略 splitChunks.minSize、splitChunks.minChunks、splitChunks.maxAsyncRequests 和 splitChunks.maxInitialRequests 选项，并始终为此缓存组创建 chunk。
+							enforce: true
+						}
+					}
+				}
 			},
 			module: {
 				rules: [
