@@ -1,5 +1,5 @@
+import A from './A'
+export default function C() {
 
-export default function N() {
-
-	return <div>1</div>
+	return <div>C <A/></div>
 }

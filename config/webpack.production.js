@@ -70,8 +70,12 @@ module.exports = (env, config) => {
 					new TerserPlugin(TerserPluginOptions)
 				],
 				splitChunks: {
+					name: 'common',
 					// 包含 异步 和 initial 的（只要符合规则，都将被分成单独包）
 					chunks: 'all',
+					minChunks: 2, // 最少被两个 chunk 引用的模块就可以被分包
+					minSize: 0,
+					// cacheGroups 是自继承 splitChunks 的规则
 					cacheGroups: {
 						// 将 react 框架单独分包
 						framework: {
