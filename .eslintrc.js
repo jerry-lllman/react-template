@@ -32,6 +32,7 @@ module.exports = {
         "react/react-in-jsx-scope": "off", // 关闭 自定义规则
         "no-var": "error", //禁用 var，用 let 和 const 代替
         "quotes": ["warn", "single"], // 单引号
-        '@typescript-eslint/no-var-requires': 0, // 允许使用 require
+        "@typescript-eslint/no-var-requires": 0, // 允许使用 require
+        "no-debugger": "warn"
     }
 }

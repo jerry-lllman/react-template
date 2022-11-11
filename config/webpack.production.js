@@ -1,3 +1,4 @@
+const crypto = require('crypto')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 const { merge } = require('webpack-merge')
@@ -53,6 +54,18 @@ const addPackagePath = (packageName, relativeToPath) => {
 	}
 }
 
+function isModuleCSS(module) {
+  return (
+    // mini-css-extract-plugin
+    module.type === `css/mini-extract` ||
+    // extract-css-chunks-webpack-plugin (old)
+    module.type === `css/extract-chunks` ||
+    // extract-css-chunks-webpack-plugin (new)
+    module.type === `css/extract-css-chunks`
+  )
+}
+
+
 // 收集 react/react-dom 的所有依赖
 for (const packageName of ['react', 'react-dom']) {
 	addPackagePath(packageName, '.')
@@ -75,6 +88,7 @@ module.exports = (env, config) => {
 					chunks: 'all',
 					minChunks: 2, // 最少被两个 chunk 引用的模块就可以被分包
 					minSize: 0,
+					maxSize: 160000,
 					// cacheGroups 是自继承 splitChunks 的规则
 					cacheGroups: {
 						// 将 react 框架单独分包
@@ -90,6 +104,30 @@ module.exports = (env, config) => {
 							priority: 40,
 							// 告诉 webpack 忽略 splitChunks.minSize、splitChunks.minChunks、splitChunks.maxAsyncRequests 和 splitChunks.maxInitialRequests 选项，并始终为此缓存组创建 chunk。
 							enforce: true
+						},
+						// 针对比较大的lib进行打包
+						lib: {
+							test(module) {
+								return (module.size() > 160000 && /node_modules[/\\]/.test(module.nameForCondition()) || '')
+							},
+							name(module) {
+								const hash = crypto.createHash('sha1')
+                if (isModuleCSS(module)) {
+                  module.updateHash(hash)
+                } else {
+                  if (!module.libIdent) {
+                    throw new Error(
+                      `Encountered unknown module type: ${module.type}. Please open an issue.`
+                    )
+                  }
+                  hash.update(module.libIdent({ context: '.' }))
+                }
+
+                return hash.digest('hex').substring(0, 8)
+							},
+							priority: 30,
+							minChunks: 1,
+							reuseExistingChunk: true
 						}
 					}
 				}

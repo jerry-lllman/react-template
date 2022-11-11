@@ -7,7 +7,7 @@
     "base-build": "webpack --config config/webpack.production.js",
     "build": "pnpm run eslint && pnpm run type-check && pnpm run base-build",
     "analyz": "pnpm run base-build --profile",
-    "start:dev": "webpack serve --config config/webpack.development.js",
+    "dev": "webpack serve --config config/webpack.development.js",
     "lint": "pnpm run eslint && pnpm run type-check",
     "eslint": "eslint --fix --ext .js,.jsx,.ts,.tsx src",
     "type-check": "bash -c tsc --noEmit",
