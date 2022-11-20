@@ -7,7 +7,7 @@
 
 ## 开发须知
 1. webpack 配置文件在 config 文件夹下
-2. 需要额外安装 cypress 程序 `npx cypress install --force`
+2. 需要额外安装 Cypress 程序 `npx cypress install --force`
 
 ## scripts
 开发人员仅需要运行以下4个命令即可
@@ -15,8 +15,8 @@
 2. `pnpm dev` 运行开发服务器
 3. `pnpm build` 打包
 4. `pnpm analyz` 打包后产物分析
-5. `cypress:open` 打开 cypress
-	 <!-- `pnpm test` 分为e2e 和 单元测试 -->
+5. `test:e2e` 打开`Cypress` e2e 测试 （打开失败看开发须知）
+6. `test:ct` 打开`Cypress` 组件测试
 
 ## todos
 1. eslint 💡  
@@ -41,8 +41,9 @@
 	-- More...  
 3. 打包时结合tsc 来检测代码是否正确 ✅  
 	-- 原因：babel-loader 可以进行ts转译，但是不能进行错误类型检测  
-5. gitcommit-hooks  
+4. gitcommit-hooks  
 	-- pre-commit ✅  
 	-- lint-staged 优化，仅对存入暂存区的文件进行lint检查 ✅  
 	-- 提交时的 commit 信息规范 ✅  
+5. Cypress 测试 ✅  
 ...

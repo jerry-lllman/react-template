@@ -11,7 +11,8 @@
     "lint": "pnpm run eslint && pnpm run type-check",
     "eslint": "eslint --fix --ext .js,.jsx,.ts,.tsx src",
     "type-check": "bash -c tsc --noEmit",
-    "cypress:open": "cypress open",
+    "test:e2e": "cypress open --e2e",
+    "test:ct": "cypress open --component",
     "postinstall": "husky install"
   },
   "lint-staged": {
@@ -31,6 +32,7 @@
     "@commitlint/cli": "^17.0.3",
     "@commitlint/config-conventional": "^17.0.3",
     "@swc/core": "^1.2.223",
+    "@types/node": "^18.11.9",
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
     "@types/webpack-bundle-analyzer": "^4.4.1",
@@ -42,6 +44,7 @@
     "css-loader": "^6.7.1",
     "cypress": "^11.1.0",
     "eslint": "^8.20.0",
+    "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-react": "^7.30.1",
     "eslint-webpack-plugin": "^3.2.0",
     "html-webpack-plugin": "^5.5.0",

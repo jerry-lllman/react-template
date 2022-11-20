@@ -1,6 +1,10 @@
 {
   "compilerOptions": {
     "target": "es5",
+    "types": [
+      "cypress",
+      "node"
+    ],
     "lib": [
       "dom",
       "dom.iterable",
@@ -22,11 +26,18 @@
     "importHelpers": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": [
+        "./src/*"
+      ]
     },
   },
   "include": [
-    "src"
+    "src",
+    // "cypress",
+    "cypress.d.ts"
   ],
-  "exclude": ["node_modules", "src/**/*.spec.ts"]
+  "exclude": [
+    "node_modules",
+    "src/**/*.spec.ts"
+  ]
 }
