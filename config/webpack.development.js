@@ -19,7 +19,7 @@ module.exports = merge(baseConfig, {
 	module: {
 		rules: [
 			{
-				test: /\.less$/,
+				test: /\.(css|less)$/,
 				use: [
 					"thread-loader",
 					"style-loader",

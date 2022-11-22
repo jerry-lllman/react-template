@@ -3,6 +3,7 @@ const webpackConfig = require("./config/webpack.development")
 
 export default defineConfig({
   e2e: {
+    baseUrl: `http://localhost:${webpackConfig.devServer.port}`,
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
