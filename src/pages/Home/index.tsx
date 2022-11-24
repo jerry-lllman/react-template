@@ -5,5 +5,5 @@ export default function Home() {
 	return <div>
 		<div>Home</div>
 		<Link to={'/test'}>Test</Link>
-		</div>
+	</div>
 }
